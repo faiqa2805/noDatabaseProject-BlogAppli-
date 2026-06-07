@@ -1,0 +1,387 @@
+/* Custom CSS Variables for central design token management */
+:root {
+  --bg-gradient-1: #e0c3fc;
+  --bg-gradient-2: #8ec5fc;
+  --bg-gradient-3: #fbc2eb;
+  --bg-gradient-4: #a6c1ee;
+  
+  --panel-bg: rgba(255, 255, 255, 0.75);
+  --panel-border: rgba(255, 255, 255, 0.4);
+  --text-primary: #2c3e50;
+  --text-secondary: #5a6c7d;
+  
+  --accent-color: #4a90e2;
+  --accent-hover: #357abd;
+  --danger-color: #ff4d4d;
+  --danger-hover: #cc0000;
+  
+  --radius-lg: 16px;
+  --radius-md: 8px;
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Global Document Layout Configuration */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: var(--text-primary);
+  min-height: 100vh;
+  box-sizing: border-box;
+  
+  /* Animated Gradient Background Canvas Setup */
+  background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-gradient-4));
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+/* GPU Hardware-Accelerated Layout Transform Loop */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+form {
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--panel-border);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 650px;
+  margin: 0 auto 40px auto;
+}
+
+form h2{
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-primary);
+
+}
+
+form input[type="text"],
+form textarea{
+  width: 100%;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text-primary);
+  box-sizing: border-box;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+form input[type="text"]:focus, 
+form textarea:focus {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.15);
+}
+
+form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Unified Button Architecture Tokens
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.btn-primary {
+  background: var(--accent-color);
+  color: white !important;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(74, 144, 226, 0.25);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+}
+.btn-danger:hover {
+  background: var(--danger-color);
+  color: white !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 77, 77, 0.2);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Post Cards Display Grid
+   ========================================================================== */
+.section-divider {
+  border: none;
+  height: 1px;
+  background: rgba(0, 0, 0, 0.05);
+  margin: 40px 0;
+}
+
+.posts-feed-container {
+  max-width: 650px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.posts-feed-container h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.post-card {
+  background: var(--panel-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--panel-border);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  overflow-wrap: break-word;
+  word-break: break-word; /* Solves your text overflow bug definitively */
+  transition: var(--transition-smooth);
+}
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+}
+
+.post-card h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+}
+
+.post-card p {
+  margin: 0 0 20px 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.post-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Strips form formatting layout entirely inside actions group */
+.post-actions-group form {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  width: auto;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-secondary);
+  font-style: italic;
+  padding: 40px;
+}
+
+/* ==========================================================================
+   Dashboard Structure & Analytics Widgets
+   ========================================================================== */
+.dashboard-wrapper {
+  max-width: 700px;
+  margin: 0 auto;
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--panel-border);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.06);
+}
+
+.dashboard-wrapper h1 {
+  margin-top: 0;
+  font-size: 26px;
+  color: var(--text-primary);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: var(--transition-smooth);
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+}
+
+.stat-icon {
+  font-size: 28px;
+  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.stat-number {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 4px 0 0 0;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Advanced Social Links Interactions
+   ========================================================================== */
+.contact-section p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.social-links-container {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Individual Brand Interaction Adjustments */
+.social-link.linkedin {
+  color: #0077b5;
+}
+.social-link.linkedin:hover {
+  background: #0077b5;
+  color: white !important;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 119, 181, 0.3);
+}
+
+.social-link.github {
+  color: #24292e;
+}
+.social-link.github:hover {
+  background: #24292e;
+  color: white !important;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(36, 41, 46, 0.3);
+}
+
+/* ==========================================================================
+   Advanced Capsule Navigation Component 
+   ========================================================================== */
+nav {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 8px 16px;
+  border-radius: 30px; /* Turns the navbar into a modern sleek capsule */
+  max-width: 500px;
+  margin: 20px auto 40px auto; /* Centers the menu dynamically on the viewport */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  position: sticky;
+  top: 20px; /* Sticks to the top of the browser screen cleanly as you scroll */
+  z-index: 1000;
+}
+
+/* Base Interactive Hyperlinks */
+nav a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: -0.2px;
+  padding: 10px 22px;
+  border-radius: 20px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Hover Micro-interaction Background Pill */
+nav a:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Explicit Active State Trackers */
+nav a.active-tab {
+  color: white !important;
+  background: var(--accent-color);
+  box-shadow: 0 4px 14px rgba(74, 144, 226, 0.4);
+  transform: scale(1.02);
+}
+
+/* Active Tab Click Feedback Compression */
+nav a:active {
+  transform: scale(0.97);
+}

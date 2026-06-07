@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Blog Workspace</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="active-tab">Home</a>
+    <a href="/more">More</a>
+  </nav>
+
+  <form action="/posts" method="POST">
+    <h2>Create a New Post</h2>
+    <input type="text" placeholder="Title...." name="title" required>
+    <textarea placeholder="Unleash your creativity here..." name="content" required></textarea>
+    <button type="submit" class="btn btn-primary">Publish Post</button>
+  </form>
+
+  <hr class="section-divider">
+
+  <div class="posts-feed-container">
+    <h2>All Blog Posts</h2>
+
+    <% if(posts.length === 0) { %>
+      <p class="empty-state">No posts yet. Write something above!</p>
+    <% } else { %>
+      <% posts.forEach((post, index) => { %>
+        <div class="post-card">
+          <h3><%= post.title %></h3>
+          <p><%= post.content %></p>
+
+          <div class="post-actions-group">
+            <a href="/posts/edit/<%= index %>" class="btn btn-primary">Edit Post</a>
+            
+            <form action="/posts/delete/<%= index %>" method="POST" onsubmit="alert('Post is deleted!');">
+              <button type="submit" class="btn btn-danger">Delete Post</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+
+</body>
+</html>

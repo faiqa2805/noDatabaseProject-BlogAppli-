@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editing Mode</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+  <nav>
+    <a href="/">Home</a>
+    <a href="/more">More</a>
+  </nav>
+
+  <form action="/posts/update/<%= index %>" method="POST">
+    <h2>Editing Mode Active</h2>
+    
+    <label style="font-weight: 600; font-size: 14px; margin-bottom: -8px; color: var(--text-secondary);">Blog Title</label>
+    <input type="text" name="title" value="<%= post.title %>" required>
+    
+    <label style="font-weight: 600; font-size: 14px; margin-bottom: -8px; color: var(--text-secondary);">Blog Content</label>
+    <textarea name="content" required><%= post.content %></textarea>
+    
+    <div style="display: flex; gap: 12px; margin-top: 10px;">
+      <button type="submit" class="btn btn-primary" style="flex: 1;">Save Changes</button>
+      <a href="/" class="btn btn-danger" style="flex: 1;">Cancel</a>
+    </div>
+  </form>
+
+</body>
+</html>
